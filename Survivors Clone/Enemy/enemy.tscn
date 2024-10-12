@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://7yjdiymhnktp"]
+
+[ext_resource type="Texture2D" uid="uid://b60ra6i2lk54v" path="res://Textures/Enemy/kolbold_weak.png" id="1_6iypd"]
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_7gudu"]
+
+[sub_resource type="Animation" id="Animation_8ptcp"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_o7wbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_idjom"]
+_data = {
+"RESET": SubResource("Animation_o7wbb"),
+"walk": SubResource("Animation_8ptcp")
+}
+
+[node name="enemy_kobold_weak" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_7gudu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6iypd")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_idjom")
+}

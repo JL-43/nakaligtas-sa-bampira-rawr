@@ -1,0 +1,6 @@
+res://Player/player.tscn
+res://World/my_world_2_point_0.tscn
+res://Player/player.gd
+res://Enemy/enemy.tscn
+res://Enemy/enemy.gd
+res://Utility/hit_box.tscn
